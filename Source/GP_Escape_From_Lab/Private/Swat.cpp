@@ -370,7 +370,7 @@ void ASwat::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimePro
 	DOREPLIFETIME(ASwat, recoilValue);
 	DOREPLIFETIME(ASwat, gunShellEjection);
 	DOREPLIFETIME(ASwat, initGrenadeSpawnRot);
-	
+
 }
 void ASwat::BeginPlay()
 {
@@ -994,7 +994,6 @@ void ASwat::DestroyWeaponServer_Implementation(AWeaponBase* HitWeapon)
 }
 void ASwat::Interact()
 {
-
 	FVector Start = GetMesh()->GetBoneLocation(FName("head"));
 	// 머리부터 카메라 방향 2m까지 직선쏘기
 
@@ -1084,7 +1083,7 @@ void ASwat::Interact()
 				{
 					SubWeapon = HitWeapon;
 					SubWeapon->SetActorEnableCollision(false);
-					hasSubWeaponName =SubWeapon->WeaponData->WeaponName;
+					hasSubWeaponName = SubWeapon->WeaponData->WeaponName;
 					hasSubWeapon = true;
 					DestroyWeaponServer(HitWeapon);
 				}
@@ -1110,10 +1109,10 @@ void ASwat::Interact()
 			//UE_LOG(LogTemp, Warning, TEXT("HIT")); 
 			//UE_LOG(LogTemp, Warning, TEXT("Med : %d "), hasMedkit);
 			//UE_LOG(LogTemp, Warning, TEXT("ammo :  %d"), hasAmmo);
-  		   // 인벤토리에 추가하는 기능을 넣는다.
+		   // 인벤토리에 추가하는 기능을 넣는다.
 		   // UE_LOG(LogTemp, Warning, TEXT("히트"));
-	        // UE_LOG(LogTemp, Warning, TEXT("히트 : %s"), *Pickup->ItemData->ItemName);
-			
+			// UE_LOG(LogTemp, Warning, TEXT("히트 : %s"), *Pickup->ItemData->ItemName);
+
 		   // 이런식으로 아이템 사용가능.
 			DestroyItemServer(Pickup);
 		}
@@ -1314,6 +1313,20 @@ void ASwat::Tick(float DeltaTime)
 
 	auto muzzleTrans = weaponMesh->GetSocketTransform("Muzzle");
 	spotComp->SetWorldTransform(muzzleTrans);
+
+
+	// 서버에서 충돌처리해야함?
+	//FVector Start = GetMesh()->GetBoneLocation(FName("head"));
+	//// 머리부터 카메라 방향 2m까지 직선쏘기
+
+	//FVector End = Start + cameraComp->GetForwardVector() * 200.0f;
+	//traceCollisionActor = LineTraceComp->LineTraceSingle(Start, End, true);
+
+	//* Actor = LineTraceComp->LineTraceSingle(Start, End, true);
+	
+		
+
+	
 }
 // Called to bind functionality to input
 void ASwat::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

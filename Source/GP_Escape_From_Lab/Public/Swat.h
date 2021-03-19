@@ -135,11 +135,15 @@ public:
 	//무기 버리기를 위한 linetrace위치 설정및 spawn까지
 	UFUNCTION(Server, Reliable, BlueprintCallable)
 		void DropItem(FName ItemName);
+	
+
 
 	UFUNCTION(BlueprintCallable)
 		AZombie* KnifeAttack();
 
 public:
+
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UStaticMeshComponent* coneMeshComp = nullptr;
 	UFUNCTION(BlueprintCallable)

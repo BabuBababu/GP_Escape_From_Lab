@@ -17,12 +17,15 @@ struct FWeaponData : public FTableRowBase
 		
 
 	// 무기 이름
-	UPROPERTY(EditAnyWhere)
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite)
 		FString WeaponName;
 
 	//무기 스켈레탈 메쉬
-	UPROPERTY(EditAnyWhere)
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite)
 		class USkeletalMesh* WeaponMesh;
+
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite)
+		class UStaticMesh* WeaponStaticMesh;
 
 	//무기 에임 포스
 	//UPROPERTY(EditAnyWhere)
@@ -84,9 +87,15 @@ public:
 	//무기 메시
 	UPROPERTY(EditAnyWhere)
 		class USkeletalMeshComponent* MeshComp;
+
+	//무기 메시
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite)
+		class UStaticMeshComponent* StaticMeshComp;
+
+
 	// 디폴트 무기.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated)
-		FName DefaultWeaponName;
+		FName DefaultWeaponName = FName("AR4");
 
 	//가져올 데이터 테이블 행1
 		FWeaponData* WeaponData;
